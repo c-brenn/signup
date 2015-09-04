@@ -1,3 +1,5 @@
+require 'csv'
+
 class Member < ActiveRecord::Base
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -21,6 +23,15 @@ class Member < ActiveRecord::Base
       end
     end
     { added: added, errors: errors }
+  end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |member|
+        csv << member.attributes.values_at(*column_names)
+      end
+    end
   end
 
 end
