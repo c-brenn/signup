@@ -16,6 +16,7 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'simplecov', :require => false
 end
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets

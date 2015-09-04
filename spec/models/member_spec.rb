@@ -46,4 +46,17 @@ RSpec.describe Member, type: :model do
       end
     end
   end
+
+  describe '.to_csv' do
+    let(:size) { 5 }
+    let!(:members) { Array.new(size) { create(:member) } }
+
+    subject { Member.to_csv }
+
+    it "has the right size" do
+      # number of rows = num of records + header row
+      expected_size = size + 1
+      expect(subject.split("\n").size).to eq expected_size
+    end
+  end
 end
