@@ -27,9 +27,13 @@ class Member < ActiveRecord::Base
 
   def self.to_csv
     CSV.generate do |csv|
-      csv << column_names
+      cnames = column_names - ['created_at', 'updated_at']
+      csv << cnames
+      year_index = cnames.find_index 'year'
       all.each do |member|
-        csv << member.attributes.values_at(*column_names)
+        attributes = member.attributes.values_at(*cnames)
+        attributes[year_index] = ['I', 'II', 'III', 'IV', 'Postgrad/Staff'][attributes[year_index] - 1]
+        csv << attributes
       end
     end
   end

@@ -1,0 +1,27 @@
+.member-listing-container
+  %h3
+    = "Listing Members (#{@members.length} total)"
+  .export-button
+    = link_to "export as csv", export_members_path(format: :csv)
+  .table-container
+    %table
+      %thead
+        %tr
+          %td
+          %td Email
+          %td First Name
+          %td Last Name
+          %td Year
+      %tbody
+        - @members.each_with_index do | member, index |
+          %tr
+            %td
+              = index
+            %td
+              = member.email
+            %td
+              = member.first_name
+            %td
+              = member.last_name
+            %td
+              = ['I', 'II', 'III', 'IV', 'Postgrad/Staff'][member.year - 1]

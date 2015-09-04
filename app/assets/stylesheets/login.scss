@@ -1,0 +1,38 @@
+img {
+  width: 30%;
+  margin-left: 35%;
+}
+
+form {
+  width: 70%;
+  margin-left: 15%;
+
+  .field {
+    input {
+      width: 60%;
+      margin-left: 20%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 3px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      &[type=email], &[type=password] {
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+        border: 1px solid #ccc;
+      }
+      &[type=submit] {
+        border: none;
+        -webkit-box-shadow: 0 0 0px 1000px $ducss-orange inset;
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  form {
+    width: 100% !important;
+    margin-left: 0px !important;
+  }
+}
