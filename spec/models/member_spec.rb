@@ -14,6 +14,9 @@ RSpec.describe Member, type: :model do
   it { is_expected.to validate_presence_of :last_name }
   it { is_expected.to validate_length_of(:last_name).is_at_most 128 }
 
+  it { is_expected.to validate_presence_of :year }
+  it { is_expected.to validate_inclusion_of(:year).in_range 1..5 }
+
   describe '.import_json' do
     subject { Member.import_json(member_array) }
     let(:member_array) { Array.new(5) { build(:member) } }
