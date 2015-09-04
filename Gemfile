@@ -9,10 +9,13 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'ffaker'
 end
 
 group :test do
   gem 'shoulda-matchers', require: false
+  gem 'guard-rspec'
+  gem 'guard-livereload'
 end
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
