@@ -1,6 +1,5 @@
 class MembersController < ApplicationController
   before_action :authenticate
-  protect_from_forgery only: []
 
   def add_members
     members ||= params[:members]
