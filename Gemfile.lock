@@ -131,10 +131,12 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.13.4)
     rack (1.6.4)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
@@ -263,6 +265,8 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  pg
+  puma
   rails (= 4.2.3)
   rails_admin
   rspec-rails

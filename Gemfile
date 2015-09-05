@@ -25,11 +25,17 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'haml'
 
+group :production do
+  # Use postgres in production
+  gem 'pg'
+end
+
 # Use rails admin for managing resources
 gem 'rails_admin'
 # user devise for authentication
 gem 'devise'
-
+# Use puma as the app server
+gem 'puma'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
