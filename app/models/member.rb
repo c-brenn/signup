@@ -32,10 +32,13 @@ class Member < ActiveRecord::Base
       year_index = cnames.find_index 'year'
       all.each do |member|
         attributes = member.attributes.values_at(*cnames)
-        attributes[year_index] = ['I', 'II', 'III', 'IV', 'Postgrad/Staff'][attributes[year_index] - 1]
+        attributes[year_index] = member.year_string
         csv << attributes
       end
     end
   end
 
+  def year_string
+    ['I', 'II', 'III', 'IV', 'Postgrad/Staff'][year - 1]
+  end
 end

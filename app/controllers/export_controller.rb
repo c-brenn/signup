@@ -5,7 +5,7 @@ class ExportController < ApplicationController
     @members = Member.all
     respond_to do |format|
       format.html
-      format.csv { send_data @members.to_csv }
+      format.csv { send_data @members.to_csv, filename: 'members.csv' }
     end
   end
 

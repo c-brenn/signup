@@ -1,4 +1,7 @@
 .member-listing-container {
+  padding-left: 2px;
+  padding-right: 2px;
+
   h3 {
     float: left;
   }
@@ -37,6 +40,16 @@
       td {
         padding: 2px;
       }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+
+  .member-listing-container {
+    font-size: 10px;
+    h3 {
+     font-size: 12px;
     }
   }
 }

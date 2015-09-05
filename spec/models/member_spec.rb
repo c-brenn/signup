@@ -59,4 +59,20 @@ RSpec.describe Member, type: :model do
       expect(subject.split("\n").size).to eq expected_size
     end
   end
+
+  describe '.year_string' do
+    let(:member) { build(:member, year: 2) }
+
+    subject { member.year_string }
+
+    context 'with undergrad year' do
+      it { is_expected.to match 'II' }
+    end
+
+    context 'with non undergrad year' do
+      before { member.year = 5 }
+
+      it { is_expected.to match 'Postgrad/Staff' }
+    end
+  end
 end
