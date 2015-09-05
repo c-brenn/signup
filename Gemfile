@@ -32,6 +32,8 @@ group :production do
   gem 'rails_12factor'
 end
 
+# CORS yay
+gem 'rack-cors', :require => 'rack/cors'
 # Use rails admin for managing resources
 gem 'rails_admin'
 # user devise for authentication
