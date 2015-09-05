@@ -61,10 +61,10 @@ The easiest way to deploy this app is probably [Heroku](https://heroku.com). Tha
 Thankfully Dokku provide some nice documentation telling you how to set up DNS correctly for a server running Dokku [here](http://progrium.viewdocs.io/dokku/dns/). It involves pointing two A records at the server, one for yourdomain.com and one for all subdomains of yourdomain.com.  
 
 ### Get a Server
-DigitalOcean provide a base Dokku image that works out of the box. A guide on how to set it up, with Postgres can be found [here](https://www.digitalocean.com/community/tutorials/how-to-use-the-dokku-one-click-digitalocean-image-to-run-a-ruby-on-rails-app). It involves:
-1. Creating a droplet from the Dokku image
-2. Installing the [Postgres plugin](https://github.com/Kloadut/dokku-pg-plugin)
-3. Deploying your app (git push dokku master)
+DigitalOcean provide a base Dokku image that works out of the box. A guide on how to set it up, with Postgres can be found [here](https://www.digitalocean.com/community/tutorials/how-to-use-the-dokku-one-click-digitalocean-image-to-run-a-ruby-on-rails-app). It involves:  
+1. Creating a droplet from the Dokku image  
+2. Installing the [Postgres plugin](https://github.com/Kloadut/dokku-pg-plugin)  
+3. Deploying your app (git push dokku master)  
 
 This app has a little script in `deploy/post-deploy` that runs any pending database migration. You can get this to run after every Dokku deploy easily using [this plugin](https://github.com/mlomnicki/dokku-deploy-hooks)
 
