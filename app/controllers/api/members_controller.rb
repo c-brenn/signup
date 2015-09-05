@@ -1,4 +1,4 @@
-class MembersController < ApplicationController
+class Api::MembersController < ApplicationController
   before_action :authenticate
 
   def add_members

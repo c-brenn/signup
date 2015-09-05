@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MembersController, type: :controller do
+RSpec.describe Api::MembersController, type: :controller do
 
   let(:token) { create(:api_key) }
   let(:headers) { { 'CONTENT_TYPE' => 'application/json' } }

@@ -1,4 +1,4 @@
-class AccessController < ApplicationController
+class Api::AccessController < ApplicationController
   before_action :authenticate
 
   def index

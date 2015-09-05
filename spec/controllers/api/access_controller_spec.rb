@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AccessController, type: :controller do
+RSpec.describe Api::AccessController, type: :controller do
 
   describe 'GET #index' do
 
