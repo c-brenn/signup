@@ -28,6 +28,8 @@ gem 'haml'
 group :production do
   # Use postgres in production
   gem 'pg'
+  # required for full dokku features
+  gem 'rails_12factor'
 end
 
 # Use rails admin for managing resources
