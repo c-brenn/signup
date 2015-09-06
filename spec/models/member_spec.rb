@@ -20,7 +20,7 @@ RSpec.describe Member, type: :model do
   describe '.import_json' do
     subject { Member.import_json(member_array) }
     let(:member_array) { Array.new(5) { build(:member) } }
-    let(:expected_hash) { {added: 5, errors: 0} }
+    let(:expected_hash) { {added: 5, errors: 0, error_checksums: []} }
 
     context 'with valid members' do
       it "adds all members" do
@@ -28,9 +28,13 @@ RSpec.describe Member, type: :model do
       end
     end
 
+    def member_with_checkum(email)
+      (attributes_for(:member, email: email).stringify_keys).merge!({"checksum" => email})
+    end
+
     context 'with invalid users' do
-      let(:member_array) { (Array.new(3) { build(:member) }) << build(:member, email: "bad@bad") }
-      let(:expected_hash) { {added: 3, errors: 1} }
+      let(:member_array) { (Array.new(3) { build(:member) }) << member_with_checkum("bad") }
+      let(:expected_hash) { {added: 3, errors: 1, error_checksums: ["bad"]} }
 
       it "ignores invalid members" do
         is_expected.to match expected_hash
@@ -38,8 +42,9 @@ RSpec.describe Member, type: :model do
     end
 
     context 'with duplicate users' do
-      let(:member_array) { (Array.new(3) { build(:member) }) << create(:member) }
-      let(:expected_hash) { {added: 3, errors: 1} }
+      before { create(:member, email: "duplicate@copy.cat") }
+      let(:member_array) { (Array.new(3) { build(:member) }) << member_with_checkum("duplicate@copy.cat")}
+      let(:expected_hash) { {added: 3, errors: 1, error_checksums: ["duplicate@copy.cat"]} }
 
       it "ignores duplicate members" do
         is_expected.to match expected_hash

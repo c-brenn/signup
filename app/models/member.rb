@@ -12,6 +12,7 @@ class Member < ActiveRecord::Base
   def self.import_json(member_array)
     added = 0
     errors = 0
+    error_checksums = []
     member_array.each do | json |
       if json
         m = new(email: json['email'], first_name: json['first_name'], last_name: json['last_name'], year: json['year'])
@@ -19,10 +20,11 @@ class Member < ActiveRecord::Base
           added += 1
         else
           errors += 1
+          error_checksums << json['checksum']
         end
       end
     end
-    { added: added, errors: errors }
+    { added: added, errors: errors, error_checksums: error_checksums }
   end
 
   def self.to_csv
