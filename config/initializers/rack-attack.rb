@@ -2,9 +2,9 @@ class Rack::Attack
   Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
 
   Rack::Attack.blacklist('ban login scrapers') do |req|
-    # block clients making a lot of requests for access tokens for 1 hour
-    Rack::Attack::Allow2Ban.filter(req.ip, :maxretry => 10, :findtime => 1.minute, :bantime => 1.hour) do
-      req.path == '/api/access'
+    # block clients making a lot of requests for access tokens/login for 1 hour
+    Rack::Attack::Allow2Ban.filter(req.ip, :maxretry => 20, :findtime => 1.minute, :bantime => 1.hour) do
+      req.path == '/api/access' || req.path == '/users/sign_in'
     end
   end
 
