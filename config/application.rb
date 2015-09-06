@@ -30,5 +30,7 @@ module DucssSignup
         resource '/api/members/import', :headers => :any, :methods => [:post]
       end
     end
+
+    config.middleware.use Rack::Attack
   end
 end

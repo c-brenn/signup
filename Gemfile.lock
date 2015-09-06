@@ -138,6 +138,8 @@ GEM
       slop (~> 3.4)
     puma (2.13.4)
     rack (1.6.4)
+    rack-attack (4.3.0)
+      rack
     rack-cors (0.4.0)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
@@ -273,6 +275,7 @@ DEPENDENCIES
   jquery-rails
   pg
   puma
+  rack-attack
   rack-cors
   rails (= 4.2.3)
   rails_12factor

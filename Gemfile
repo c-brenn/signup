@@ -32,6 +32,8 @@ group :production do
   gem 'rails_12factor'
 end
 
+# For throttling, whitelisting, blacklisting
+gem 'rack-attack'
 # CORS yay
 gem 'rack-cors', :require => 'rack/cors'
 # Use rails admin for managing resources
