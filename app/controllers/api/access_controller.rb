@@ -13,11 +13,12 @@ private
 
   def authenticate
     authenticate_or_request_with_http_basic do |email, password|
-      resource = User.find_by(email: email)
-      if resource.valid_password?(password)
-        sign_in :user, resource
+      user = User.find_by(email: email)
+      if user && user.valid_password?(password)
+        sign_in :user, user
+      else
+        render nothing: true, status: :unauthorized
       end
     end
-    warden.custom_failure! if performed?
   end
 end
